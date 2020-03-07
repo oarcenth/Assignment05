@@ -9,10 +9,50 @@ function displayMenu() {
 }
 
 function update(chingaderas){ // need to find out how to update a specific part of 2 dimensional array 
-    let items = window.prompt("Add the number of things you want");
-    chingaderas.push(items);
-    wincow.console.log(items, "was added");
-    window.console.log("")
+    var sku = window.prompt("Enter SKU # you want to change");
+    var succesful = 0;
+    for (var i = 0; i < chingaderas.lenght; i++) { // Iterator to go through the array 
+        if (sku == chinganderas[i][0]) { // go through the array and if the sku entered equals the first position (sku), then continue and ask for the what will be the changed 
+            var current = window.prompt("How many " + chingaderas[i][1] + " are in stock?");
+            succesful  =  1; 
+            if (isNaN(current)) {  // if not a number aler the user and rerun the update function
+                alert("Not a number");
+                update(chingaderas); 
+            } else {
+                chingaderas[i][2] = parseInt(current);
+                window.console.log("The oventory of " + arg[i][1] + "is now " + arg[i[2]]);
+            }
+        } else if (sku == null) {
+            break;
+        }
+    }
+
+    if (succesful == 0 && sku != null) {
+        alert("Sku Not found.");
+        update(chingaderas)
+    }
+    
+    //iterate through the arrays 
+    // var checkList = function (chingaderas) {chingaderas.forEach(function (row) {
+    //     row.forEach(function(col){
+    //         window.console.log("this has run")
+    //     });
+    //     console.log("----")
+    // });
+    // }
+
+    // let checkItem = window.prompt("Search for the sku number"); 
+    // if (checkItem === checkList(chingaderas)) {
+    //     window.console.log("the sku number matches the inventory"); 
+    // }
+    
+    
+    
+    // let items = window.prompt("Add the number of things you want");
+    // chingaderas.push(items);
+    // wincow.console.log(items, "was added");
+    // window.console.log("")
+
 }
 
 
@@ -37,7 +77,8 @@ function main (){
                 ]
 
     view(inventory); 
-    update(inventory); 
+    // update(inventory); 
+    update(inventory);
 
 }
 
