@@ -58,24 +58,28 @@ var main = function () {
    window.console.log("say something")
     
     let command; 
-    displayMenu();
     
     while (true) {
-            command = window.prompt("What would you like to do? (view, update, exit)");
-            if (command == "view") { // if to view inventory
-                    view(inventory); 
-            } else if (command == "update") { // to run the update function 
-                    update(inventory); 
-            } else if (command == "exit"){ // to exit the program 
-                   break; 
-            } 
-            else {
-                    window.document.write("invalid entry"); 
+        command = window.prompt("Enter Command (view, update, exit)");
+        if (command !== null) {
+            if (command === "view") {
+                view(inventory);
+                
+            } else if (command === "update") {
+                update(inventory);
+               
+            } else if (command === "exit") {
+                break; 
+            } else {
+                window.alert("That is not a valid command")
+              
             }
-    
-            
+        } 
+
     }
-    window.console.log("Program has ended"); 
+    window.console.log("Program terminated");   
+
 }
 
+displayMenu();
 main(); 

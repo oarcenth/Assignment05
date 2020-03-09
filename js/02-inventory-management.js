@@ -23,7 +23,7 @@ function update(chingaderas){ // need to find out how to update a specific part 
                 window.console.log("The oventory of " + arg[i][1] + "is now " + arg[i[2]]);
             }
         } else if (sku == null) {
-            break;
+            window.console.log("say nothing")
         }
     }
 
