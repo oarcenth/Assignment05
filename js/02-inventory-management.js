@@ -64,23 +64,23 @@ function view(chingaderas){
 
 }
 
-function main (){
-    let inventory; 
-    let command; 
-    displayMenu();
-    inventory = [
-                    [2233, "Hat",    12, "$14.99"],
-                    [3223, "Socks",  36, "$9.99"],
-                    [4824, "Shirt",  10, "$15.99"],
-                    [6343, "Jeans",  22, "$39.99"],
-                    [9382, "Jacket", 5,  "$49.99"],
-                ]
+// function main (){
+//     let inventory; 
+//     let command; 
+//     displayMenu();
+//     inventory = [
+//                     [2233, "Hat",    12, "$14.99"],
+//                     [3223, "Socks",  36, "$9.99"],
+//                     [4824, "Shirt",  10, "$15.99"],
+//                     [6343, "Jeans",  22, "$39.99"],
+//                     [9382, "Jacket", 5,  "$49.99"],
+//                 ]
 
-    view(inventory); 
-    // update(inventory); 
-    update(inventory);
+//     view(inventory); 
+//     // update(inventory); 
+//     update(inventory);
 
-}
+// }
 
 main(); 
 
