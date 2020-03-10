@@ -82,4 +82,4 @@ var main = function () {
 }
 
 displayMenu();
-main(); 
+setTimeout(main, 3000); 
