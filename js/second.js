@@ -4,7 +4,6 @@ function displayMenu() {
         window.console.log("COMMAND MENU");
         window.console.log("view - View all products");
         window.console.log("update - Update Products");
-        window.console.log("del - Delete employee");
         window.console.log("exit - Exit the application");
 }
 
@@ -20,7 +19,7 @@ function view(chingaderas){
 }
             
 
-function update(chingaderas) { // need to find out how to update a specific part of 2 dimensional array 
+function update(chingaderas) { 
     "use strict";
 var sku = window.prompt("Enter the SKU# of the item you would like to update");
 var changeMade = false;
@@ -33,7 +32,7 @@ for (var i = 0; i < chingaderas.length; i++) {
                     update(chingaderas);
             } else {
                     chingaderas[i][2] = parseInt(currentStock);
-                    window.console.log("The new inventory of " + chingaderas[i][1] + "is now " + chingaderas[i][2]);
+                    window.console.log("The new inventory of " + chingaderas[i][1] +  "(s) is now " + chingaderas[i][2]);
             }
     } else if (sku == null) {
             break
@@ -54,11 +53,13 @@ var inventory = [
 ];
 
 
+
 var main = function () {
-   window.console.log("say something")
+    "use strict";
+   window.console.log("Say something")
     
     let command; 
-    
+    displayMenu();
     while (true) {
         command = window.prompt("Enter Command (view, update, exit)");
         if (command !== null) {
@@ -77,9 +78,9 @@ var main = function () {
         } 
 
     }
-    window.console.log("Program terminated");   
+    window.console.log("Program done");   
 
 }
 
-displayMenu();
-setTimeout(main, 3000); 
+
+window.addEventListener("click", main);
