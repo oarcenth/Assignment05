@@ -4,85 +4,85 @@ function displayMenu() {
     window.console.log("COMMAND MENU");
     window.console.log("view - View all products");
     window.console.log("update - Update Products");
-    window.console.log("del - Delete employee");
     window.console.log("exit - Exit the application");
 }
 
-function update(chingaderas){ // need to find out how to update a specific part of 2 dimensional array 
-    var sku = window.prompt("Enter SKU # you want to change");
-    var succesful = 0;
-    for (var i = 0; i < chingaderas.lenght; i++) { // Iterator to go through the array 
-        if (sku == chinganderas[i][0]) { // go through the array and if the sku entered equals the first position (sku), then continue and ask for the what will be the changed 
-            var current = window.prompt("How many " + chingaderas[i][1] + " are in stock?");
-            succesful  =  1; 
-            if (isNaN(current)) {  // if not a number aler the user and rerun the update function
-                alert("Not a number");
-                update(chingaderas); 
-            } else {
-                chingaderas[i][2] = parseInt(current);
-                window.console.log("The oventory of " + arg[i][1] + "is now " + arg[i[2]]);
-            }
-        } else if (sku == null) {
-            window.console.log("say nothing")
+
+function view(chingaderas){ // use for each method to show the content of the array - chingaderas is the parameter you pass --> your array 
+"use strict";
+var i = 1;
+chingaderas.forEach(function (thing) { //thing is the parameter that will pass through the function ==> the content of the array 
+    window.console.log(String(i) + ". " + thing);
+    i += 1;
+});
+window.console.log("");
+}
+        
+
+function update(chingaderas) { 
+"use strict";
+var sku = window.prompt("Enter the SKU# of the item you would like to update"); // propmt to get the sku number
+var changeMade = false; // dummy variable (lightswitch)
+for (var i = 0; i < chingaderas.length; i++) {  // iterate throughg the arrau
+if (sku == chingaderas[i][0]) { //if the sku entered matches any position 0 (sku) in the array 
+        var currentStock = window.prompt("How many " + chingaderas[i][1] + " are in stock?"); // ask another question to input the number
+        changeMade = true; // lightswitch on
+        if (isNaN(currentStock)) { // if its not a number , then alert the number is invalid and run the update fx again
+                window.alert("Invalid entry");
+                update(chingaderas);
+        } else {
+                chingaderas[i][2] = parseInt(currentStock); // the numbered entered on current stock will change to the position 2 of array (number)
+                window.console.log("The new inventory of " + chingaderas[i][1] +  "(s) is now " + chingaderas[i][2]);
+                localStorage.setItem("storedInv", JSON.stringify(chingaderas)); // once the changes have been made to the inventory add them to the lcal storage but use stringingy to make it into a string (lcal storage can only take strings )
         }
-    }
-
-    if (succesful == 0 && sku != null) {
-        alert("Sku Not found.");
-        update(chingaderas)
-    }
-    
-    //iterate through the arrays 
-    // var checkList = function (chingaderas) {chingaderas.forEach(function (row) {
-    //     row.forEach(function(col){
-    //         window.console.log("this has run")
-    //     });
-    //     console.log("----")
-    // });
-    // }
-
-    // let checkItem = window.prompt("Search for the sku number"); 
-    // if (checkItem === checkList(chingaderas)) {
-    //     window.console.log("the sku number matches the inventory"); 
-    // }
-    
-    
-    
-    // let items = window.prompt("Add the number of things you want");
-    // chingaderas.push(items);
-    // wincow.console.log(items, "was added");
-    // window.console.log("")
-
+} else if (sku == null) { // if the sku is null then break out of the function /// cannot put alert here that sku not valid because it you need to break or else does not run again
+        break
+}
+}
+if (changeMade == false & sku != null) { // iif the lightswitch is off then the sku is null then tell them the sku number is not valid 
+    window.alert("Sku number not found")
+    update(chingaderas);
+}
 }
 
+var main = function () {
 
-function view(chingaderas){ 
-    let items; 
-    for (items of chingaderas) {
-        window.console.log(String(items))
+"use strict";
+
+let command; 
+if (localStorage.getItem("storedInv") == null) { // if statement to check if there is a "storedInv" value in the lcal storage, if there is none --> create the inventory below
+var inventory = [
+    [2233, "Hat",    12, "$14.99"],
+    [3223, "Socks",  36, "$9.99"],
+    [4824, "Shirt",  10, "$15.99"],
+    [6343, "Jeans",  22, "$39.99"],
+    [9382, "Jacket", 5,  "$49.99"],
+    ];
+}
+else inventory = JSON.parse(localStorage.getItem("storedInv")); // if there is a "storedInv" value in the lcl storgaed, get and parse the item meaning that it will become an array again
+
+displayMenu();
+while (true) {
+    command = window.prompt("Enter Command (view, update, exit)"); 
+    if (command !== null) { // nested if statements to go through options  // will only run when you input a statement that is not null 
+        if (command === "view") {
+            view(inventory);
+            
+        } else if (command === "update") {
+            update(inventory);
+           
+        } else if (command === "exit") {
+            break; 
+        } else {
+            window.alert("That is not a valid command")
+          
+        }
     } 
 
 }
+window.console.log("Program done");   // command 
 
-// function main (){
-//     let inventory; 
-//     let command; 
-//     displayMenu();
-//     inventory = [
-//                     [2233, "Hat",    12, "$14.99"],
-//                     [3223, "Socks",  36, "$9.99"],
-//                     [4824, "Shirt",  10, "$15.99"],
-//                     [6343, "Jeans",  22, "$39.99"],
-//                     [9382, "Jacket", 5,  "$49.99"],
-//                 ]
-
-//     view(inventory); 
-//     // update(inventory); 
-//     update(inventory);
-
-// }
-
-main(); 
+}
 
 
- 
+window.addEventListener("click", main); // event listener so the program runs when cliked on 
